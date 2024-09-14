@@ -61,11 +61,12 @@ export default function General() {
                         icon={<TableRow.Icon source={findAssetId("ic_message_retry")} />}
                         onPress={() => NativeModules.BundleUpdaterManager.reload()}
                     />
-                    <TableRow
-                        label={settings.safeMode?.enabled ? Strings.RELOAD_IN_NORMAL_MODE : Strings.RELOAD_IN_SAFE_MODE}
+                    <TableSwitchRow
+                        label={Strings.SAFE_MODE}
                         subLabel={settings.safeMode?.enabled ? Strings.RELOAD_IN_NORMAL_MODE_DESC : Strings.RELOAD_IN_SAFE_MODE_DESC}
                         icon={<TableRow.Icon source={findAssetId("ic_privacy_24px")} />}
-                        onPress={toggleSafeMode}
+                        value={settings.safeMode?.enabled}
+                        onValueChange={toggleSafeMode}
                     />
                     <TableSwitchRow
                         label={Strings.DEVELOPER_SETTINGS}

@@ -6,6 +6,7 @@ import { findByNameLazy } from "@metro/wrappers";
 import { registeredSections } from "@ui/settings";
 
 import { CustomPageRenderer, wrapOnPress } from "./shared";
+import { Strings } from "@core/i18n";
 
 function SettingsSection() {
     const navigation = NavigationNative.useNavigation();
@@ -31,11 +32,11 @@ export function patchPanelUI(unpatches: (() => void | boolean)[]) {
     unpatches.push(after("default", findByNameLazy("getScreens", false), (_a, screens) => ({
         ...screens,
         VendettaCustomPage: {
-            title: "Bunny",
+            title: Strings.BUNNY,
             render: () => <CustomPageRenderer />
         },
         BUNNY_CUSTOM_PAGE: {
-            title: "Bunny",
+            title: Strings.BUNNY,
             render: () => <CustomPageRenderer />
         }
     })));

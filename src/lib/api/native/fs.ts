@@ -19,6 +19,15 @@ export async function removeFile(path: string, prefix = "pyoncord/") {
 }
 
 /**
+ * Remove file from given path, currently no check for any failure
+ * @param path Path to the file
+ */
+export async function removeCacheFile(path: string, prefix = "pyoncord/") {
+    if (typeof FileManager.removeFile !== "function") throw new Error("'fs.removeFile' is not supported");
+    return void await FileManager.removeFile("cache", `${prefix}${path}`);
+}
+
+/**
  * Check if the file or directory given by the path exists
  * @param path Path to the file
  */

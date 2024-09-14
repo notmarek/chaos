@@ -1,4 +1,4 @@
-import PyoncordIcon from "@assets/icons/pyoncord.png";
+import PyoncordIcon from "@assets/icons/revenge.png";
 import { Strings } from "@core/i18n";
 import { findAssetId } from "@lib/api/assets";
 import { isFontSupported, isThemeSupported } from "@lib/api/native/loader";
@@ -11,7 +11,7 @@ export { PyoncordIcon };
 
 export default function initSettings() {
     registerSection({
-        name: "Bunny",
+        name: Strings.BUNNY,
         items: [
             {
                 key: "BUNNY",

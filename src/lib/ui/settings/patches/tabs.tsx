@@ -5,6 +5,7 @@ import { findByNameLazy, findByPropsLazy } from "@metro/wrappers";
 import { registeredSections } from "@ui/settings";
 
 import { CustomPageRenderer, wrapOnPress } from "./shared";
+import { Strings } from "@core/i18n";
 
 const settingConstants = findByPropsLazy("SETTING_RENDERER_CONFIG");
 const SettingsOverviewScreen = findByNameLazy("SettingsOverviewScreen", false);
@@ -40,7 +41,7 @@ export function patchTabsUI(unpatches: (() => void | boolean)[]) {
             ...rendererConfigValue,
             VendettaCustomPage: {
                 type: "route",
-                title: () => "Bunny",
+                title: () => Strings.BUNNY,
                 screen: {
                     route: "VendettaCustomPage",
                     getComponent: () => CustomPageRenderer
@@ -48,7 +49,7 @@ export function patchTabsUI(unpatches: (() => void | boolean)[]) {
             },
             BUNNY_CUSTOM_PAGE: {
                 type: "route",
-                title: () => "Bunny",
+                title: () => Strings.BUNNY,
                 screen: {
                     route: "BUNNY_CUSTOM_PAGE",
                     getComponent: () => CustomPageRenderer

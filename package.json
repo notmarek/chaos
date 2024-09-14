@@ -1,9 +1,9 @@
 {
-    "name": "bunny",
+    "name": "revenge",
     "private": true,
     "author": {
-        "name": "Pyoncord Team",
-        "url": "https://github.com/pyoncord"
+        "name": "Revenge Team",
+        "url": "https://github.com/revenge-mod"
     },
     "scripts": {
         "build": "node scripts/build.mjs",
