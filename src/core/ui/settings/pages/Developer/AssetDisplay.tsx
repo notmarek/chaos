@@ -15,17 +15,17 @@ export default function AssetDisplay({ asset }: AssetDisplayProps) {
     return (
         <TableRow
             label={asset.name}
-            subLabel={`ID: ${asset.id}`}
-            icon={<Image source={asset.id} style={{ width: 32, height: 32 }} />}
+            subLabel={`Index: ${asset.index}`}
+            icon={<Image source={asset.index} style={{ width: 32, height: 32 }} />}
             onPress={() => {
                 openAlert("revenge-asset-display-details", <AlertModal
                     title={asset.name}
-                    content={`ID: ${asset.id}\nIndex: ${asset.index}\nModule ID: ${asset.moduleId}`}
-                    extraContent={<Image resizeMode="contain" source={asset.id} style={{ flex: 1, width: 'auto', height: 192 }} />}
+                    content={`Index: ${asset.index}\nModule ID: ${asset.moduleId}`}
+                    extraContent={<Image resizeMode="contain" source={asset.index} style={{ flex: 1, width: 'auto', height: 192 }} />}
                     actions={
                         <Stack>
                             <AlertActionButton text="Copy asset name" variant="primary" onPress={() => copyToClipboard(asset.name)} />
-                            <AlertActionButton text="Copy asset ID" variant="secondary" onPress={() => copyToClipboard(asset.id.toString())} />
+                            <AlertActionButton text="Copy asset index" variant="secondary" onPress={() => copyToClipboard(asset.index.toString())} />
                         </Stack>
                     }
                 />);
