@@ -1,20 +1,40 @@
 import { Asset } from "@lib/api/assets";
+import { lazyDestructure } from "@lib/utils/lazy";
+import { findByProps } from "@metro";
 import { clipboard } from "@metro/common";
-import { LegacyFormRow } from "@metro/common/components";
+import { Stack, TableRow } from "@metro/common/components";
 import { showToast } from "@ui/toasts";
 import { Image } from "react-native";
+
+const { openAlert } = lazyDestructure(() => findByProps("openAlert", "dismissAlert"));
+const { AlertModal, AlertActionButton } = lazyDestructure(() => findByProps("AlertModal", "AlertActions"));
 
 interface AssetDisplayProps { asset: Asset; }
 
 export default function AssetDisplay({ asset }: AssetDisplayProps) {
     return (
-        <LegacyFormRow
-            label={`${asset.name} - ${asset.id}`}
-            trailing={<Image source={asset.id} style={{ width: 32, height: 32 }} />}
+        <TableRow
+            label={asset.name}
+            subLabel={`ID: ${asset.id}`}
+            icon={<Image source={asset.id} style={{ width: 32, height: 32 }} />}
             onPress={() => {
-                clipboard.setString(asset.name);
-                showToast.showCopyToClipboard();
+                openAlert("revenge-asset-display-details", <AlertModal
+                    title={asset.name}
+                    content={`ID: ${asset.id}\nIndex: ${asset.index}\nModule ID: ${asset.moduleId}`}
+                    extraContent={<Image resizeMode="contain" source={asset.id} style={{ flex: 1, width: 'auto', height: 192 }} />}
+                    actions={
+                        <Stack>
+                            <AlertActionButton text="Copy asset name" variant="primary" onPress={() => copyToClipboard(asset.name)} />
+                            <AlertActionButton text="Copy asset ID" variant="secondary" onPress={() => copyToClipboard(asset.id.toString())} />
+                        </Stack>
+                    }
+                />);
             }}
         />
     );
 }
+
+const copyToClipboard = (text: string) => {
+    clipboard.setString(text);
+    showToast.showCopyToClipboard();
+};
