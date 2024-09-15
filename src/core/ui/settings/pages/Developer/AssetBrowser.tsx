@@ -14,14 +14,13 @@ export default function AssetBrowser() {
                     style={{ margin: 10 }}
                     onChangeText={(v: string) => setSearch(v)}
                 />
-                {/* TODO: Fix this, don't know why borderRadius is not working */}
-                <FlatList
-                    style={{ borderRadius: 16, paddingHorizontal: 12, overflow: 'hidden', background: 'transparent' }}
-                    data={Object.values(assetsMap).filter(a => a.name.includes(search) || a.id.toString() === search)}
-                    // contentContainerStyle={{ borderRadius: 12, paddingHorizontal: 12, overflow: 'hidden' }}
-                    renderItem={({ item }: any) => <AssetDisplay asset={item} />}
-                    ItemSeparatorComponent={LegacyFormDivider}
-                />
+                <View style={{ flex: 1, borderRadius: 16, paddingHorizontal: 12, overflow: 'hidden', background: 'transparent' }}>
+                    <FlatList
+                        data={Object.values(assetsMap).filter(a => a.name.includes(search) || a.id.toString() === search)}
+                        renderItem={({ item }: any) => <AssetDisplay asset={item} />}
+                        ItemSeparatorComponent={LegacyFormDivider}
+                    />
+                </View>
             </View>
         </ErrorBoundary>
     );
