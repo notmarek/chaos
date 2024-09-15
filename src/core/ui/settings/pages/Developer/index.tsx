@@ -18,7 +18,7 @@ import { ScrollView, StyleSheet } from "react-native";
 
 const { hideActionSheet } = lazyDestructure(() => findByProps("openLazy", "hideActionSheet"));
 const { showSimpleActionSheet } = lazyDestructure(() => findByProps("showSimpleActionSheet"));
-const { openAlert, dismissAlert } = lazyDestructure(() => findByProps("openAlert", "dismissAlert"));
+const { openAlert } = lazyDestructure(() => findByProps("openAlert", "dismissAlert"));
 const { AlertModal, AlertActionButton } = lazyDestructure(() => findByProps("AlertModal", "AlertActions"));
 
 const RDT_EMBED_LINK = "https://raw.githubusercontent.com/amsyarasyiq/rdt-embedder/main/dist.js";
@@ -109,7 +109,7 @@ export default function Developer() {
                                     content={Strings.MODAL_RELOAD_REQUIRED_DESC}
                                     actions={
                                         <Stack>
-                                            <AlertActionButton text={Strings.RELOAD} variant="primary" onPress={() => NativeModules.BundleUpdaterManager.reload()} />
+                                            <AlertActionButton text={Strings.RELOAD} variant="destructive" onPress={() => NativeModules.BundleUpdaterManager.reload()} />
                                             <AlertActionButton text={Strings.CANCEL} variant="secondary" />
                                         </Stack>
                                     }
