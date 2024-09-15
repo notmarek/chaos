@@ -16,7 +16,7 @@ export default function AssetBrowser() {
                 />
                 {/* TODO: Fix this, don't know why borderRadius is not working */}
                 <FlatList
-                    style={{ borderRadius: 12, paddingHorizontal: 12, overflow: 'hidden' }}
+                    style={{ borderRadius: 16, paddingHorizontal: 12, overflow: 'hidden', background: 'transparent' }}
                     data={Object.values(assetsMap).filter(a => a.name.includes(search) || a.id.toString() === search)}
                     // contentContainerStyle={{ borderRadius: 12, paddingHorizontal: 12, overflow: 'hidden' }}
                     renderItem={({ item }: any) => <AssetDisplay asset={item} />}
