@@ -7,6 +7,7 @@ import { semver } from "@metro/common";
 
 import { createBunnyPluginAPI } from "./api";
 import * as t from "./types";
+// import { Strings } from "@core/i18n";
 
 type PluginInstantiator = (
     bunny: t.BunnyPluginObject,
@@ -143,7 +144,7 @@ export async function updateRepository(repoUrl: string) {
     if (!storedRepo) {
         for (const id in repo) {
             if (corePluginInstances.has(id)) {
-                throw new Error(`Plugins can't have the same ID as any of Bunny core plugin '${id}'`);
+                throw new Error(`Plugins can't have the same ID as any of  Chaos core plugin '${id}'`);
             }
         }
 

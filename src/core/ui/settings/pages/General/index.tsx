@@ -2,7 +2,7 @@ import { Strings } from "@core/i18n";
 import { PyoncordIcon } from "@core/ui/settings";
 import About from "@core/ui/settings/pages/General/About";
 import { findAssetId } from "@lib/api/assets";
-import { getDebugInfo, toggleSafeMode } from "@lib/api/debug";
+import { getDebugInfo, togglefakeMode } from "@lib/api/debug";
 import { settings } from "@lib/api/settings";
 import { useProxy } from "@lib/api/storage";
 import { DISCORD_SERVER, GITHUB } from "@lib/utils/constants";
@@ -63,10 +63,10 @@ export default function General() {
                     />
                     <TableSwitchRow
                         label={Strings.SAFE_MODE}
-                        subLabel={settings.safeMode?.enabled ? Strings.RELOAD_IN_NORMAL_MODE_DESC : Strings.RELOAD_IN_SAFE_MODE_DESC}
+                        subLabel={settings.fakeMode?.enabled ? Strings.RELOAD_IN_NORMAL_MODE_DESC : Strings.RELOAD_IN_SAFE_MODE_DESC}
                         icon={<TableRow.Icon source={findAssetId("ic_privacy_24px")} />}
-                        value={settings.safeMode?.enabled}
-                        onValueChange={toggleSafeMode}
+                        value={settings.fakeMode?.enabled}
+                        onValueChange={togglefakeMode}
                     />
                     <TableSwitchRow
                         label={Strings.DEVELOPER_SETTINGS}

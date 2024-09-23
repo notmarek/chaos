@@ -1,9 +1,9 @@
 {
-    "name": "revenge",
+    "name": "chaos",
     "private": true,
     "author": {
-        "name": "Revenge Team",
-        "url": "https://github.com/revenge-mod"
+        "name": "Chaos Team",
+        "url": "https://github.com/chaos-mod"
     },
     "scripts": {
         "build": "node scripts/build.mjs",

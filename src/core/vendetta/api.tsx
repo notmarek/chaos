@@ -24,6 +24,7 @@ import { createElement, useEffect } from "react";
 import { View } from "react-native";
 
 import { VdPluginManager, VendettaPlugin } from "./plugins";
+// import { Strings } from "@core/i18n";
 
 export async function createVdPluginObject(plugin: VendettaPlugin) {
     return {
@@ -34,7 +35,7 @@ export async function createVdPluginObject(plugin: VendettaPlugin) {
             // Wrapping this with wrapSync is NOT an option.
             storage: await createStorage<Record<string, any>>(storage.createMMKVBackend(plugin.id)),
         },
-        logger: new DiscordLogger(`Bunny » ${plugin.manifest.name}`),
+        logger: new DiscordLogger(`Chaos » ${plugin.manifest.name}`),
     };
 }
 

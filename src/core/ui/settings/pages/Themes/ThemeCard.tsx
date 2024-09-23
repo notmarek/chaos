@@ -33,7 +33,7 @@ export default function ThemeCard({ item: theme }: CardWrapper<Theme>) {
             headerLabel={theme.data.name}
             headerSublabel={authors ? `by ${authors.map(i => i.name).join(", ")}` : ""}
             descriptionLabel={theme.data.description ?? "No description."}
-            toggleType={!settings.safeMode?.enabled ? "radio" : undefined}
+            toggleType={!settings.fakeMode?.enabled ? "radio" : undefined}
             toggleValue={() => themes[theme.id].selected}
             onToggleChange={(v: boolean) => {
                 selectAndApply(v, theme);

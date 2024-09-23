@@ -28,12 +28,12 @@ export default function Themes() {
                 fetchFn: installTheme
             }}
             items={Object.values(themes)}
-            safeModeHint={{
-                message: formatString("SAFE_MODE_NOTICE_THEMES", { enabled: Boolean(settings.safeMode?.currentThemeId) }),
-                footer: settings.safeMode?.currentThemeId && <Button
+            fakeModeHint={{
+                message: formatString("SAFE_MODE_NOTICE_THEMES", { enabled: Boolean(settings.fakeMode?.currentThemeId) }),
+                footer: settings.fakeMode?.currentThemeId && <Button
                     size="small"
                     text={Strings.DISABLE_THEME}
-                    onPress={() => delete settings.safeMode?.currentThemeId}
+                    onPress={() => delete settings.fakeMode?.currentThemeId}
                     style={{ marginTop: 8 }}
                 />
             }}

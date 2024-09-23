@@ -75,15 +75,15 @@ export default function Developer() {
                                 label={Strings.LOAD_FROM_CUSTOM_URL}
                                 subLabel={Strings.LOAD_FROM_CUSTOM_URL_DEC}
                                 icon={<TableRow.Icon source={findAssetId("copy")} />}
-                                value={loaderConfig.customLoadUrl.enabled}
+                                value={loaderConfig.fakeCustomLoadUrl.enabled}
                                 onValueChange={(v: boolean) => {
-                                    loaderConfig.customLoadUrl.enabled = v;
+                                    loaderConfig.fakeCustomLoadUrl.enabled = v;
                                 }}
                             />
-                            {loaderConfig.customLoadUrl.enabled && <TableRow label={<TextInput
-                                defaultValue={loaderConfig.customLoadUrl.url}
+                            {loaderConfig.fakeCustomLoadUrl.enabled && <TableRow label={<TextInput
+                                defaultValue={loaderConfig.fakeCustomLoadUrl.url}
                                 size="md"
-                                onChange={(v: string) => loaderConfig.customLoadUrl.url = v}
+                                onChange={(v: string) => loaderConfig.fakeCustomLoadUrl.url = v}
                                 placeholder="http://localhost:4040/vendetta.js"
                                 label={Strings.BUNNY_URL}
                             />} />}
@@ -104,7 +104,7 @@ export default function Developer() {
                             subLabel={Strings.CLEAR_BUNDLE_DESC}
                             icon={<TableRow.Icon source={findAssetId("trash")} />}
                             onPress={() => {
-                                openAlert("revenge-clear-bundle-reload-confirmation", <AlertModal
+                                openAlert("chaos-clear-bundle-reload-confirmation", <AlertModal
                                     title={Strings.MODAL_RELOAD_REQUIRED}
                                     content={Strings.MODAL_RELOAD_REQUIRED_DESC}
                                     actions={

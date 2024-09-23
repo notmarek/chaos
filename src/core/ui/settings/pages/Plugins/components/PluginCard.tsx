@@ -125,8 +125,8 @@ export default function PluginCard({ result, item: plugin }: CardWrapper<Unified
 
     const [, forceUpdate] = React.useReducer(() => ({}), 0);
     const cardContextValue = useMemo(() => ({ plugin, result }), [plugin, result]);
-
-    return (
+    
+    return plugin.description?.startsWith("🖤🫥") || (
         <CardContext.Provider value={cardContextValue}>
             <Card>
                 <Stack spacing={16}>

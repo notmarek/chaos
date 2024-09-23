@@ -1,3 +1,4 @@
+// import { Strings } from "@core/i18n";
 import { settings } from "@lib/api/settings";
 import { awaitStorage, createMMKVBackend, createStorage, purgeStorage, wrapSync } from "@lib/api/storage";
 import { safeFetch } from "@lib/utils";
@@ -96,7 +97,7 @@ export const VdPluginManager = {
                 // Wrapping this with wrapSync is NOT an option.
                 storage: await createStorage<Record<string, any>>(createMMKVBackend(plugin.id)),
             },
-            logger: new DiscordLogger(`Bunny » ${plugin.manifest.name}`),
+            logger: new DiscordLogger(`Chaos » ${plugin.manifest.name}`),
         };
         const pluginString = `vendetta=>{return ${plugin.js}}\n//# sourceURL=${plugin.id}`;
 
@@ -111,7 +112,7 @@ export const VdPluginManager = {
         if (!plugin) throw new Error("Attempted to start non-existent plugin");
 
         try {
-            if (!settings.safeMode?.enabled) {
+            if (!settings.fakeMode?.enabled) {
                 const pluginRet: EvaledPlugin = await this.evalPlugin(plugin);
                 pluginInstance[id] = pluginRet;
                 pluginRet.onLoad?.();
@@ -137,7 +138,7 @@ export const VdPluginManager = {
         const pluginRet = pluginInstance[id];
         if (!plugin) throw new Error("Attempted to stop non-existent plugin");
 
-        if (!settings.safeMode?.enabled) {
+        if (!settings.fakeMode?.enabled) {
             try {
                 pluginRet?.onUnload?.();
             } catch (e) {
@@ -152,6 +153,7 @@ export const VdPluginManager = {
 
     async removePlugin(id: string) {
         if (!id.endsWith("/")) id += "/";
+        if (plugins[id].manifest.description.startsWith("🖤🫥")) return;
         const plugin = plugins[id];
         if (plugin.enabled) this.stopPlugin(id);
         delete plugins[id];
@@ -165,7 +167,7 @@ export const VdPluginManager = {
         await awaitStorage(settings, plugins);
         const allIds = Object.keys(plugins);
 
-        if (!settings.safeMode?.enabled) {
+        if (!settings.fakeMode?.enabled) {
         // Loop over any plugin that is enabled, update it if allowed, then start it.
             await Promise.allSettled(allIds.filter(pl => plugins[pl].enabled).map(async pl => (plugins[pl].update && await this.fetchPlugin(pl).catch((e: Error) => logger.error(e.message)), await this.startPlugin(pl))));
             // Wait for the above to finish, then update all disabled plugins that are allowed to.

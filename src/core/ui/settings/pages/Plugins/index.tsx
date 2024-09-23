@@ -6,7 +6,7 @@ import { findAssetId } from "@lib/api/assets";
 import { settings } from "@lib/api/settings";
 import { useProxy } from "@lib/api/storage";
 import { showToast } from "@lib/ui/toasts";
-import { BUNNY_PROXY_PREFIX, VD_PROXY_PREFIX } from "@lib/utils/constants";
+import { BUNNY_PROXY_PREFIX, VD_PROXY_PREFIX, MAREK_PREFIX } from "@lib/utils/constants";
 import { lazyDestructure } from "@lib/utils/lazy";
 import { Author } from "@lib/utils/types";
 import { findByProps } from "@metro";
@@ -63,7 +63,7 @@ function PluginPage(props: PluginPageProps) {
             "Name (A-Z)": (a, b) => a.name.localeCompare(b.name),
             "Name (Z-A)": (a, b) => b.name.localeCompare(a.name)
         }}
-        safeModeHint={{ message: Strings.SAFE_MODE_NOTICE_PLUGINS }}
+        fakeModeHint={{ message: Strings.SAFE_MODE_NOTICE_PLUGINS }}
         items={items}
         {...props}
     />;
@@ -77,7 +77,7 @@ export default function Plugins() {
         useItems={() => useProxy(VdPluginManager.plugins) && Object.values(VdPluginManager.plugins)}
         resolveItem={unifyVdPlugin}
         ListHeaderComponent={() => {
-            const unproxiedPlugins = Object.values(VdPluginManager.plugins).filter(p => !p.id.startsWith(VD_PROXY_PREFIX) && !p.id.startsWith(BUNNY_PROXY_PREFIX));
+            const unproxiedPlugins = Object.values(VdPluginManager.plugins).filter(p => !p.id.startsWith(MAREK_PREFIX) && !p.id.startsWith(VD_PROXY_PREFIX) && !p.id.startsWith(BUNNY_PROXY_PREFIX));
             if (!unproxiedPlugins.length) return null;
 
             // TODO: Make this dismissable
@@ -112,7 +112,7 @@ export default function Plugins() {
         installAction={{
             label: "Install a plugin",
             fetchFn: async (url: string) => {
-                if (!url.startsWith(VD_PROXY_PREFIX) && !url.startsWith(BUNNY_PROXY_PREFIX) && !settings.developerSettings) {
+                if (!url.startsWith(MAREK_PREFIX) && !url.startsWith(VD_PROXY_PREFIX) && !url.startsWith(BUNNY_PROXY_PREFIX) && !settings.developerSettings) {
                     openAlert("bunny-plugin-unproxied-confirmation", <AlertModal
                         title="Hold On!"
                         content="You're trying to install a plugin from an unproxied external source. This means you're trusting the creator to run their code in this app without your knowledge. Are you sure you want to continue?"

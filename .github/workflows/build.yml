@@ -40,7 +40,7 @@ jobs:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
               tag_name: ${{ steps.env.outputs.tag }}
-              release_name: Revenge ${{ steps.env.outputs.tag }}
+              release_name: Chaos ${{ steps.env.outputs.tag }}
               draft: true
               prerelease: false
       
@@ -50,8 +50,8 @@ jobs:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
               upload_url: ${{ steps.create_release.outputs.upload_url }}
-              asset_path: ./dist/revenge.js
-              asset_name: revenge.js
+              asset_path: ./dist/chaos.js
+              asset_name: chaos.js
               asset_content_type: text/javascript
       
           - name: Publish release

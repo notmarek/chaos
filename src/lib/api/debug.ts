@@ -31,14 +31,14 @@ export interface RNConstants extends PlatformConstants {
 /**
  * @internal
  */
-export async function toggleSafeMode() {
-    settings.safeMode = { ...settings.safeMode, enabled: !settings.safeMode?.enabled };
+export async function togglefakeMode() {
+    settings.fakeMode = { ...settings.fakeMode, enabled: !settings.fakeMode?.enabled };
     if (isThemeSupported()) {
-        if (getThemeFromLoader()?.id) settings.safeMode!.currentThemeId = getThemeFromLoader()!.id;
-        if (settings.safeMode?.enabled) {
+        if (getThemeFromLoader()?.id) settings.fakeMode!.currentThemeId = getThemeFromLoader()!.id;
+        if (settings.fakeMode?.enabled) {
             await selectTheme(null);
-        } else if (settings.safeMode?.currentThemeId) {
-            await selectTheme(themes[settings.safeMode?.currentThemeId]);
+        } else if (settings.fakeMode?.currentThemeId) {
+            await selectTheme(themes[settings.fakeMode?.currentThemeId]);
         }
     }
     setTimeout(BundleUpdaterManager.reload, 400);

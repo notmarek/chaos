@@ -6,6 +6,10 @@ export interface Settings {
     developerSettings: boolean;
     enableDiscordDeveloperSettings: boolean;
     safeMode?: {
+        enabled: boolean,
+        currentThemeId?: string,
+    },
+    fakeMode?: {
         enabled: boolean;
         currentThemeId?: string;
     };
@@ -13,7 +17,7 @@ export interface Settings {
 }
 
 export interface LoaderConfig {
-    customLoadUrl: {
+    fakeCustomLoadUrl: {
         enabled: boolean;
         url: string;
     };
@@ -24,7 +28,7 @@ export const settings = wrapSync(createStorage<Settings>(createMMKVBackend("VEND
 
 export const loaderConfig = wrapSync(createStorage<LoaderConfig>(
     createFileBackend(getLoaderConfigPath(), {
-        customLoadUrl: {
+        fakeCustomLoadUrl: {
             enabled: false,
             url: "http://localhost:4040/bunny.js"
         }

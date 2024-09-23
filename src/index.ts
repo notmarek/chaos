@@ -13,7 +13,7 @@ import { updateFonts } from "@lib/fonts";
 import { initPlugins } from "@lib/plugins";
 import { initThemes, patchChatBackground } from "@lib/themes";
 import { logger } from "@lib/utils/logger";
-import initSafeMode from "@ui/safeMode";
+import initfakeMode from "@ui/safeMode";
 import { patchSettings } from "@ui/settings";
 
 import * as lib from "./lib";
@@ -31,7 +31,7 @@ export default async () => {
             }
             initThemes();
         } catch (e) {
-            console.error("[Bunny] Failed to initialize themes...", e);
+            console.error(`[Chaos] Failed to initialize themes...`, e);
         }
     }
 
@@ -46,7 +46,7 @@ export default async () => {
         initFetchI18nStrings(),
         initSettings(),
         initFixes(),
-        initSafeMode()
+        initfakeMode()
     ]).then(
         // Push them all to unloader
         u => u.forEach(f => f && lib.unload.push(f))
@@ -54,7 +54,8 @@ export default async () => {
 
     // Assign window object
     window.bunny = lib;
-
+    window.malcord = true;
+    
     // Once done, load Vendetta plugins
     VdPluginManager.initPlugins()
         .then(u => lib.unload.push(u))
@@ -66,5 +67,5 @@ export default async () => {
     updateFonts();
 
     // We good :)
-    logger.log("Bunny is ready!");
+    logger.log(`Chaos is ready!`);
 };

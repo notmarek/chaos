@@ -18,7 +18,7 @@ export default function AssetDisplay({ asset }: AssetDisplayProps) {
             subLabel={`Index: ${asset.index}`}
             icon={<Image source={asset.index} style={{ width: 32, height: 32 }} />}
             onPress={() => {
-                openAlert("revenge-asset-display-details", <AlertModal
+                openAlert("chaos-asset-display-details", <AlertModal
                     title={asset.name}
                     content={`Index: ${asset.index}\nModule ID: ${asset.moduleId}`}
                     extraContent={<Image resizeMode="contain" source={asset.index} style={{ flex: 1, width: 'auto', height: 192 }} />}

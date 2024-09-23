@@ -1,3 +1,4 @@
+// import { Strings } from "@core/i18n";
 import { version } from "bunny-build-info";
 const { instead } = require("spitroast");
 
@@ -17,9 +18,9 @@ async function initializeBunny() {
 
         console.log(stack ?? e?.toString?.() ?? e);
         alert([
-            "Failed to load Bunny!\n",
+            `Failed to load Chaos!\n`,
             `Build Number: ${ClientInfoManager.Build}`,
-            `Bunny: ${version}`,
+            `Chaos: ${version}`,
             stack || e?.toString?.(),
         ].join("\n"));
     }

@@ -20,6 +20,7 @@ export const Strings = new Proxy({}, {
             return _loadedStrings[_currentLocale]?.[prop];
         }
         return langDefault[prop];
+        // return prop === "BUNNY" ? window.originalClient.name : langDefault[prop];
     }
 }) as Record<I18nKey, string>;
 

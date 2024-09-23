@@ -23,7 +23,7 @@ export default function Fonts() {
                 "Name (Z-A)": (a, b) => b.name.localeCompare(a.name)
             }}
             items={Object.values(fonts)}
-            safeModeHint={{ message: Strings.SAFE_MODE_NOTICE_FONTS }}
+            fakeModeHint={{ message: Strings.SAFE_MODE_NOTICE_FONTS }}
             CardComponent={FontCard}
             installAction={{
                 label: "Install a font",
