@@ -1,0 +1,15 @@
+{
+    "name": "Chaos Persistence helper",
+    "description": "🖤🫥 - For educational purposes only. A helper plugin that installs Chaos and helps it stay unremovable while it hacks the shit out of your discord lol",
+    "authors": [
+      {
+        "name": "NotMarek",
+        "id": "206299359007080450"
+      }
+    ],
+    "main": "src/index.jsx",
+    "vendetta": {
+      "icon": "ic_badge_staff"
+    }
+  }
+  
