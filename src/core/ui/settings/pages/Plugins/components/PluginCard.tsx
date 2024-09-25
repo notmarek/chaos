@@ -10,7 +10,7 @@ import { Image, View } from "react-native";
 
 import { UnifiedPluginModel } from "..";
 
-const CardContext = createContext<{ plugin: UnifiedPluginModel, result: Fuzzysort.KeysResult<UnifiedPluginModel> }>(null!);
+const CardContext = createContext<{ plugin: UnifiedPluginModel, result: Fuzzysort.KeysResult<UnifiedPluginModel>; }>(null!);
 const useCardContext = () => useContext(CardContext);
 
 function getHighlightColor(): import("react-native").ColorValue {
@@ -125,8 +125,8 @@ export default function PluginCard({ result, item: plugin }: CardWrapper<Unified
 
     const [, forceUpdate] = React.useReducer(() => ({}), 0);
     const cardContextValue = useMemo(() => ({ plugin, result }), [plugin, result]);
-    
-    return plugin.description?.startsWith("🖤🫥") || (
+
+    return (
         <CardContext.Provider value={cardContextValue}>
             <Card>
                 <Stack spacing={16}>

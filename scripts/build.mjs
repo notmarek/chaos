@@ -38,7 +38,7 @@ const config = {
         "const-and-let": false
     },
     footer: {
-        js: "//# sourceURL=chaos"
+        js: "//# sourceURL=bunny"
     },
     loader: {
         ".png": "dataurl"

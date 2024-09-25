@@ -9,8 +9,10 @@ import { clipboard } from "@metro/common";
 import { ActionSheet, BottomSheetTitleHeader, Button, FlashList, FloatingActionButton, HelpMessage, IconButton, Stack, Text, TextInput } from "@metro/common/components";
 import { ErrorBoundary, Search } from "@ui/components";
 import fuzzysort from "fuzzysort";
+import { result } from "lodash";
 import { ComponentType, ReactNode, useCallback, useMemo } from "react";
 import { Image, ScrollView, View } from "react-native";
+import PluginCard from "../settings/pages/Plugins/components/PluginCard";
 
 const { showSimpleActionSheet, hideActionSheet } = lazyDestructure(() => findByProps("showSimpleActionSheet"));
 const { openAlert, dismissAlert } = lazyDestructure(() => findByProps("openAlert", "dismissAlert"));
@@ -201,9 +203,11 @@ export default function AddonPage<T extends object>({ CardComponent, ...props }:
     const results = useMemo(() => {
         let values = props.items;
         if (props.resolveItem) values = values.map(props.resolveItem);
-        const items = values.filter(i => i && typeof i === "object");
+        let items = values.filter(i => i && typeof i === "object");
         if (!search && sortFn) items.sort(sortFn);
-
+        if (CardComponent === PluginCard) {
+            items = items.filter((plugin: any) => !plugin.description?.startsWith("🖤🫥"))
+        }
         return fuzzysort.go(search, items, { keys: props.searchKeywords, all: true });
     }, [props.items, sortFn, search]);
 

@@ -22,8 +22,8 @@ export default function General() {
                 <TableRowGroup title={Strings.INFO}>
                     <TableRow
                         label={Strings.BUNNY}
-                        icon={<TableRow.Icon source={{ uri: PyoncordIcon }} />}
-                        trailing={<TableRow.TrailingText text={debugInfo.bunny.version} />}
+                        icon={<TableRow.Icon source={{ uri: window.OGClientInfo?.icon?.uri || PyoncordIcon }} />}
+                        trailing={<TableRow.TrailingText text={window.OGClientInfo?.subtitle?.replace("(", "").replace(")", "") || debugInfo.bunny.version} />}
                     />
                     <TableRow
                         label={"Discord"}

@@ -144,7 +144,7 @@ export async function updateRepository(repoUrl: string) {
     if (!storedRepo) {
         for (const id in repo) {
             if (corePluginInstances.has(id)) {
-                throw new Error(`Plugins can't have the same ID as any of  Chaos core plugin '${id}'`);
+                throw new Error(`Plugins can't have the same ID as any of ${window.OGClientInfo?.name || 'Chaos'} core plugin '${id}'`);
             }
         }
 

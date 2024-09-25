@@ -31,7 +31,7 @@ export default async () => {
             }
             initThemes();
         } catch (e) {
-            console.error(`[Chaos] Failed to initialize themes...`, e);
+            console.error(`[${window.OGClientInfo?.name || 'Chaos'}] Failed to initialize themes...`, e);
         }
     }
 
@@ -67,5 +67,5 @@ export default async () => {
     updateFonts();
 
     // We good :)
-    logger.log(`Chaos is ready!`);
+    logger.log(`${window.OGClientInfo?.name || 'Chaos'} is ready!`);
 };

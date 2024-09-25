@@ -12,4 +12,4 @@ export interface Logger {
 }
 
 export const DiscordLogger = findByNameLazy("Logger");
-export const logger: Logger = new DiscordLogger("Chaos");
+export const logger: Logger = new DiscordLogger(window.OGClientInfo?.name || 'Chaos');

@@ -13,7 +13,7 @@ export default function About() {
     const versions = [
         {
             label: Strings.BUNNY,
-            version: debugInfo.bunny.version,
+            version: window.OGClientInfo?.subtitle?.replace("(", "").replace(")", "") || debugInfo.bunny.version,
             icon: "ic_progress_wrench_24px",
         },
         {

@@ -16,7 +16,7 @@ export default function Version({ label, version, icon }: VersionProps) {
             icon={<TableRow.Icon source={findAssetId(icon)} />}
             trailing={<TableRowTrailingText text={version} />}
             onPress={() => {
-                clipboard.setString(`${label} - ${version}`);
+                clipboard.setString(`${label} - ${window.OGClientInfo?.subtitle.replace("(", "").replace(")", "") || version}`);
                 showToast.showCopyToClipboard();
             }}
         />

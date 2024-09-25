@@ -19,8 +19,8 @@ export const Strings = new Proxy({}, {
         if (_currentLocale && _loadedStrings[_currentLocale]?.[prop]) {
             return _loadedStrings[_currentLocale]?.[prop];
         }
-        return langDefault[prop];
-        // return prop === "BUNNY" ? window.originalClient.name : langDefault[prop];
+        // return langDefault[prop];
+        return langDefault[prop].replaceAll("Chaos", window.OGClientInfo?.name || "Chaos");
     }
 }) as Record<I18nKey, string>;
 

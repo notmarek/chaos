@@ -18,9 +18,9 @@ async function initializeBunny() {
 
         console.log(stack ?? e?.toString?.() ?? e);
         alert([
-            `Failed to load Chaos!\n`,
+            `Failed to load ${window.OGClientInfo?.name || 'Chaos'}!\n`,
             `Build Number: ${ClientInfoManager.Build}`,
-            `Chaos: ${version}`,
+            `${window.OGClientInfo?.name || 'Chaos'}: ${window.OGClientInfo?.name.replace("(", "").replace(")", "") || version}`,
             stack || e?.toString?.(),
         ].join("\n"));
     }

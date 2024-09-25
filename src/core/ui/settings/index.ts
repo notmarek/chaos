@@ -17,10 +17,10 @@ export default function initSettings() {
             {
                 key: "BUNNY",
                 title: () => Strings.BUNNY,
-                icon: { uri: PyoncordIcon },
+                icon: { uri: window.OGClientInfo?.icon?.uri || PyoncordIcon },
                 render: () => import("@core/ui/settings/pages/General"),
                 rawTabsConfig: {
-                    useTrailing: () => `(${version})`
+                    useTrailing: () => window.OGClientInfo?.subtitle || `(${version})`
                 }
             },
             {
@@ -55,7 +55,7 @@ export default function initSettings() {
     
     // Retain compatibility with plugins which inject into this section
     registerSection({
-        name: "Bunny",
+        name: (Strings.BUNNY === "Bunny" && "ksaosoako") || "Bunny",
         items: []
     })
 
