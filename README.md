@@ -13,3 +13,7 @@ Currently it has a couple of functions malicous actors can use to hide from bein
 
 ## why?
 i was bored :)
+
+## why fork the whole client, wouldnt the plugin be enough?
+maybe, im also messing around with the idea of bundle.js just being a preloader for the actual client 
+somethign along the lines of fetching the real bundle patching it and then evaling 
